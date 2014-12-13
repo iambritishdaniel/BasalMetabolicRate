@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basal Metabolic Rate</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Basal Metabolic Rate">
+  <meta name="author" content="iambritishdaniel">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Basal Metabolic Rate</h1>
+    <h2>Calculating Basal Metabolic Rate using R and Shiny</h2>
+    <p>iambritishdaniel<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Your Basal Metabolic Rate (BMR) is defined as the minimum number of calories your body burns whether at rest, working out or lying down. These calories are the absolute minimum amount of energy your body burns, and includes all involuntary activities that your body does to stay alive such as digestion, respiration, circulation, removing waste products and regulating body temperature. Factors that affect your BMR include age, genetics, weight, heredity, body fat percentage and gender [1]. </p>
+
+<p>Your BMR is a useful number to know as it helps you know how much calories to take in as food and drink: consume more calories than your BMR and you are likely to gain weight, consume fewer calories than your BMR (either by eating fewer calories, or increasing activity to raise your BMR) and you have a better chance of losing weight.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Mifflin St. Jeor Equation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The BMR Calculator app presented here uses the Mifflin St. Joer Equation, developed by M.D. Mifflin <em>et al</em> in 1990 to calculate a person&#39;s BMR [2]. The Mifflin St. Joer equation is the most accurate for estimating an individual&#39;s BMR without knowing body fat percentage - For this reason it is perfect for developing a simple online BMR calculator.</p>
+
+<p>The Mifflin St. Joer Equation needs 4 pieces of information:</p>
+
+<ol>
+<li>The person&#39;s gender.</li>
+<li>The person&#39;s age.</li>
+<li>The person&#39;s height (in cm)</li>
+<li>The person&#39;s weight (in kg)</li>
+</ol>
+
+<p>BMR is calculated as follows:<br>
+<em>BMR</em> = (10 * weight) + (6.25 * height) - (5 * age) + S, where S is 5 for men and -161 for women [2].</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Suppose a 37 year old man, weighing 180lbs and 5&#39; 8&quot; tall were to use the calculator - what would his BMR be?  </p>
+
+<pre><code class="r">age &lt;- 37
+s &lt;- 5 # because person is male
+height &lt;- ((5 * 12) + 8) / 0.393700787402 # convert to metric units: 1cm ~ 0.394&quot; [3]
+weight &lt;- 180 / 2.20462262185 # convert to metric units: 1kg ~ 2.2lbs [3]
+</code></pre>
+
+<p>Now we can plug the numbers into the formula</p>
+
+<pre><code class="r">(10 * weight) + (6.25 * height) - (5 * age) + s
+</code></pre>
+
+<pre><code>## [1] 1715.966
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>References</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>[1] L.L. Taylor, <em>Basal Metabolic Rate</em>, [<a href="http://www.shapefit.com/basal-metabolic-rate.html">http://www.shapefit.com/basal-metabolic-rate.html</a>]<br>
+[2] Wikipedia, <em>Basal metabolic rate</em>, [<a href="http://en.wikipedia.org/wiki/Basal_metabolic_rate">http://en.wikipedia.org/wiki/Basal_metabolic_rate</a>]<br>
+[3] Conversion factors obtained from [<a href="http://www.convertunits.com/">http://www.convertunits.com/</a>]  </p>
+
+<p><center style="margin-top: 150px;"><h2>Thank you!</h2></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Mifflin St. Jeor Equation'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Example'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='References'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
